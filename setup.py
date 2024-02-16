@@ -17,9 +17,6 @@ setup(
     author='Aaron Rodriguez',
     author_email='aarodjim@gmail.com',
     packages=['pyrasorbitalkit',
-              'pyrasorbitalkit.ClcFs',
-              'pyrasorbitalkit.OrbFs',
-              'pyrasorbitalkit.parser_rasci_rasnof0',
-              'pyrasorbitalkit.wrp']
+              ]
 )
 
