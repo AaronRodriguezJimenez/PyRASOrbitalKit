@@ -11,11 +11,12 @@ See examples for current calculations.
 
 ## Instalation
 
-This package can be install using pip:
+This package can be installed using:
 
-```bash
-pip install pyrasorbitalkit
-```
+ ```bash
+   python setup.py install
+ ```
+
 
 ## Usage
 import pyrasorbitalkit
