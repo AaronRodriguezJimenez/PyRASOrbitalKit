@@ -39,28 +39,19 @@ ovlp, mos, dm = wrp.rasci_ee_print(ee, False, False, False)
 
 #- - - Compute Natural orbitals and their occupations - - -
 nos, occs = OrbFs.Build_NOs(dm, mos, ovlp)
-print('occupations :', occs)
-#- - - Redefine RAS2 based on occupations? - - -
-occ_lev = 0.01
-act_new, elec_new, occ_new, occ_lower = OrbFs.NewRAS2(occs, occ_lev)
-print('\nRedefined Active Space')
-print('New active electrons : ', elec_new)
-print('New active orbitals  : ', act_new)
-print('New occ orbitals     : ', occ_new)
-print('Lowest NO occ in RAS2: ', occ_lower)
+print('Natural Orbital occupations :', occs)
 
-#- - - Avoid redefinition of RAS2 but cut orbital space there
-# Get first NO occupation outside RAS2
+#- - - Print occupations in the active space - - -
 occ_ras2, elec_ras2, occ_larger = OrbFs.RAS2_occupations(occs, occ, elec, act)
+print('\nActive space NO occupations')
 print('Occupations :', occs)
 print('occ_ras2 = ', occ_ras2)
 print('elec_ras2 = ', elec_ras2)
 print('occ_low = ', occ_larger)
 
-#- - - Compute DFT energy for a given threshold - - -
-#eNOF is a list with DFT values for each root
-print('\nComputing NOF1-DFT energy for lower occs than RAS2')
-eNOF = ClcFs.NOFDFT2_savin(molecule, occ_lower, bas, act, elec, occ,
+
+print('\nComputing RAS energy with Natural orbitals')
+eNOF = ClcFs.RAS_NO(molecule, nos, bas, act, elec, occ,
                      spin_mult, roots, verbose)
 
 print('\nRAS-NOF1 DFT energies : ', eNOF[0])
