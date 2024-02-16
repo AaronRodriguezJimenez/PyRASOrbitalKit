@@ -16,6 +16,10 @@ setup(
     install_requires=['numpy', 'scipy', 'pyqchem'],
     author='Aaron Rodriguez',
     author_email='aarodjim@gmail.com',
-    packages=['pyrasorbitalkit']
+    packages=['pyrasorbitalkit',
+              'pyrasorbitalkit.ClcFs',
+              'pyrasorbitalkit.OrbFs',
+              'pyrasorbitalkit.parser_rasci_rasnof0',
+              'pyrasorbitalkit.wrp']
 )
 
