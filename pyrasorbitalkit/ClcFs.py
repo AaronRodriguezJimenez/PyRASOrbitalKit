@@ -27,6 +27,31 @@ def RHF_calc(molecule, bas):
                                      store_full_output=True)
     return data, ee
 
+def RHF_calc_guess_bas2(molecule, bas, bastwo, mos):
+    # - - - - RHF calculation - - - -
+    # Useful for concatenated calcualtions within QCHEM basis set projection
+    #
+    qc_input = QchemInput(molecule,
+                          jobtype='sp',
+                          method='hf',
+                          unrestricted=False,
+                          scf_guess=mos,
+                          basis=bas,
+                          basis2=bastwo,
+                          max_scf_cycles=999,
+                          set_iter=999,
+                          mem_total=2000,
+                          mem_static=100,
+                          symmetry=False,
+                          sym_ignore=False)
+
+    data, ee = get_output_from_qchem(qc_input,
+                                     processors=4,
+                                     force_recalculation=False,
+                                     return_electronic_structure=True,
+                                     store_full_output=True)
+    return data, ee
+
 
 def RASCICalculation(molecule, bas, act, elec, occ, spin_mult, roots, verbose):
     """
